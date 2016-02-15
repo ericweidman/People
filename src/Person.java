@@ -1,13 +1,14 @@
 /**
  * Created by ericweidman on 2/15/16.
  */
-public class Person {
+public class Person implements Comparable {
     int id;
     String firstName;
     String lastName;
     String emailAdd;
     String country;
     String ipAdd;
+
 
     public int getId() {
         return id;
@@ -35,14 +36,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", emailAdd='" + emailAdd + '\'' +
-                ", country='" + country + '\'' +
-                ", ipAdd='" + ipAdd + '\'' +
-                '}';
+        return firstName + " " + lastName + " from " + country+ "\n";
     }
 
     public Person(int id, String firstName, String lastName, String emailAdd, String country, String ipAdd) {
@@ -52,9 +46,11 @@ public class Person {
         this.emailAdd = emailAdd;
         this.country = country;
         this.ipAdd = ipAdd;
+    }
 
-
-
-
+    @Override
+    public int compareTo(Object o) {
+        Person p = (Person) o;
+        return lastName.compareTo(p.lastName);
     }
 }
