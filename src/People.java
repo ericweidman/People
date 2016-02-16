@@ -1,5 +1,6 @@
 import jodd.json.JsonSerializer;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,15 +13,8 @@ public class People {
         HashMap<String, ArrayList<Person>> personMap = new HashMap<>();
         ArrayList<Person> allPeople = new ArrayList<>();
 
-        File f = new File("people.csv");
-        Scanner fileScanner = new Scanner(f);
-        fileScanner.nextLine();
-        while (fileScanner.hasNext()) {
-            String line = fileScanner.nextLine();
-            String[] columns = line.split(",");
-            Person person = new Person(Integer.parseInt(columns[0]), columns[1], columns[2], columns[3], columns[4], columns[5]);
-            allPeople.add(person);
-        }
+        openFile(allPeople);
+
         for (Person person : allPeople) {
             String country = person.country;
             personMap.put(country, new ArrayList<>());
@@ -47,34 +41,16 @@ public class People {
         fw.write(json);
         fw.close();
     }
+
+    static void openFile(ArrayList<Person> allPeople) throws FileNotFoundException {
+        File f = new File("people.csv");
+        Scanner fileScanner = new Scanner(f);
+        fileScanner.nextLine();
+        while (fileScanner.hasNext()) {
+            String line = fileScanner.nextLine();
+            String[] columns = line.split(",");
+            Person person = new Person(Integer.parseInt(columns[0]), columns[1], columns[2], columns[3], columns[4], columns[5]);
+            allPeople.add(person);
+        }
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-        /*Create a Person class to store all the columns in the csv file.
-
-        +Create a HashMap<String, ArrayList<Person>> that maps country name to a list of people from that country.
-
-        +Loop over the HashMap and sort each list by last name.
-
-        +Override toString in the Person class to print out a nicely-formatted string
-        for that person (something like "Martha Jenkins from France").
-
-        +Print out the entire HashMap at the end.
-
-        +Break your code into separate methods.
-
-        +Write the resulting HashMap to a file called "people.json" formatted as JSON.
-
-
-        Optional:
-        Write tests for your methods.
-        Modify your compareTo method so it sorts by first name if the last names are the same.*/

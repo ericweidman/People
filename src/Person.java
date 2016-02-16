@@ -51,6 +51,10 @@ public class Person implements Comparable {
     @Override
     public int compareTo(Object o) {
         Person p = (Person) o;
+        if(lastName == lastName){
+            firstName.compareTo(p.firstName);
+
+        }
         return lastName.compareTo(p.lastName);
     }
 }
