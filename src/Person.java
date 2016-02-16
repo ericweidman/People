@@ -9,7 +9,6 @@ public class Person implements Comparable {
     String country;
     String ipAdd;
 
-
     public int getId() {
         return id;
     }
@@ -36,7 +35,7 @@ public class Person implements Comparable {
 
     @Override
     public String toString() {
-        return firstName + " " + lastName + " from " + country+ "\n";
+        return firstName + " " + lastName + " from " + country+ "." + "\n";
     }
 
     public Person(int id, String firstName, String lastName, String emailAdd, String country, String ipAdd) {

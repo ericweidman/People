@@ -31,7 +31,6 @@ public class People {
         System.out.println(personMap.toString());
         jsonSave(fileName, personMap);
 
-
     }
 
     static void jsonSave(String fileName, HashMap<String, ArrayList<Person>> personMap) throws IOException {
