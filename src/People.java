@@ -49,7 +49,8 @@ public class People {
         while (fileScanner.hasNext()) {
             String line = fileScanner.nextLine();
             String[] columns = line.split(",");
-            Person person = new Person(Integer.parseInt(columns[0]), columns[1], columns[2], columns[3], columns[4], columns[5]);
+            Person person = new Person(Integer.parseInt(columns[0]),
+                    columns[1], columns[2], columns[3], columns[4], columns[5]);
             allPeople.add(person);
         }
     }
